@@ -161,6 +161,7 @@ async def new_model_optimize(request: Request,
     await service.create_new_model(user, save_to, model_name, model_path, mode='optimize')
     
     
+    
     optimize_catboost(save_to, os.path.join(model_path, model_name))
     
     return {
@@ -342,135 +343,6 @@ async def delete_prediction(request: Request,
 
     return await my_predicts(request, token)
 
-
-@controller.post('/mail/parse')
-async def parse_mail_controller(request: Request,
-                                token: str,
-                                start_date_baseline: datetime,
-                                end_date_baseline: datetime,
-                                start_date_comparison: datetime,
-                                end_date_comparison: datetime,
-                                work_start_time_hours: int,
-                                work_start_time_minutes: int,
-                                work_end_time_hours: int,
-                                work_end_time_minutes: int,
-                                path_to_save: str,
-                                file: UploadFile = File(...)) -> schemas.ParseMailReturn | dict:
-    """
-    Выполняет парсинг электронных писем и сохраняет результаты в CSV-файл.
-
-    Parameters:
-    - request (Request): Объект запроса FastAPI.
-    - token (str): Токен пользователя для аутентификации.
-    - start_date_baseline (datetime): Начальная дата базового периода для парсинга.
-    - end_date_baseline (datetime): Конечная дата базового периода для парсинга.
-    - start_date_comparison (datetime): Начальная дата периода для сравнения.
-    - end_date_comparison (datetime): Конечная дата периода для сравнения.
-    - work_start_time_hours (int): Час начала рабочего времени.
-    - work_start_time_minutes (int): Минута начала рабочего времени.
-    - work_end_time_hours (int): Час окончания рабочего времени.
-    - work_end_time_minutes (int): Минута окончания рабочего времени.
-    - path_to_save (str): Путь для сохранения результатов парсинга.
-    - file (UploadFile): Загруженный CSV-файл с данными для парсинга.
-
-    Returns:
-    - ParseMailReturn | dict: Возвращает данные о сохраненном файле и списке некорректных электронных почт.
-    """
-    user: User = await utils.get_user_from_token(token, User)
-
-    save_to: str = os.path.join(await user.get_user_folder(), 'data_for_parse', file.filename)
-    path_to_save: str = os.path.join(await user.get_user_folder(), 'data_from_parse', path_to_save + '.csv')
-
-    if await utils.check_mail_parse(path_to_save, UserParseHistory, user.id):
-        return exceptions.new_parse_mail_conflict_name
-    if not await utils.check_file_expansion(file.filename, 'csv'):
-        return exceptions.wrong_file_type
-
-    with open(save_to, 'wb') as f:
-        f.write(file.file.read())
-
-    res = process_email_accounts(
-        start_date_baseline=start_date_baseline,
-        end_date_baseline=end_date_baseline,
-        start_date_comparison=start_date_comparison,
-        end_date_comparison=end_date_comparison,
-        work_start_time=time(work_end_time_hours, work_start_time_minutes),
-        work_end_time=time(work_end_time_hours, work_end_time_minutes),
-        path_to_file=save_to,
-        path_to_save=path_to_save
-    )
-
-    await service.parse_mail(
-            start_date_baseline=start_date_baseline,
-            end_date_baseline=end_date_baseline,
-            start_date_comparison=start_date_comparison,
-            end_date_comparison=end_date_comparison,
-            work_start_time_hours=work_start_time_hours,
-            work_start_time_minutes=work_start_time_minutes,
-            work_end_time_hours=work_end_time_hours,
-            work_end_time_minutes=work_end_time_minutes,
-            path_to_save=path_to_save,
-            save_to=save_to,
-            user=user
-        )
-    
-    return {
-        'file': path_to_save,
-        'wrong_emails': res
-    }
-
-
-@controller.get('/history/mail')
-async def get_mail_parse(request: Request, token: str) -> schemas.GetHistoryReturn | dict:
-    """
-    Получает историю выполненных операций парсинга электронных писем пользователя.
-
-    Parameters:
-    - request (Request): Объект запроса FastAPI.
-    - token (str): Токен пользователя для аутентификации.
-
-    Returns:
-    - GetHistoryReturn | dict: Возвращает данные об истории парсинга электронных писем пользователя.
-    """
-    user: User = await utils.get_user_from_token(token, User)
-
-    data: list = []
-    obj: QuerySet = await UserParseHistory.objects.filter(user_id=user.id).all()
-
-    for i in obj:
-        data.append(await i.json())
-
-    return {
-        'result': data
-    }
-
-
-@controller.delete('/mail/delete')
-async def delete_mail_parse(request: Request, token: str, name: str) -> schemas.DeleteHistoryReturn | dict:
-    """
-    Удаляет запись об операции парсинга электронных писем пользователя.
-
-    Parameters:
-    - request (Request): Объект запроса FastAPI.
-    - token (str): Токен пользователя для аутентификации.
-    - name (str): Название записи об операции парсинга для удаления.
-
-    Returns:
-    - DeleteHistoryReturn | dict: Возвращает статус выполнения операции удаления.
-    """
-    user: User = await utils.get_user_from_token(token, User)
-    data: QuerySet = await UserParseHistory.objects.all()
-
-    for dt in data:
-        if name in dt.data_path:
-            if dt.user_id == user.id:
-                await dt.delete()
-                break
-                
-
-    return {
-        'status': True
-    }
 
 
 @controller.get('/feedback')

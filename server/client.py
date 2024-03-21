@@ -5,19 +5,6 @@ from fastapi.responses import HTMLResponse
 client = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
-@client.get('/ping')
-async def pong(request: Request):
-    """
-    Обработчик запроса для эндпоинта '/ping'.
-
-    Args:
-        request (Request): Объект запроса FastAPI.
-
-    Returns:
-        TemplateResponse: Ответ с рендеренным HTML-шаблоном 'pong.html'.
-    """
-    return templates.TemplateResponse('pong.html', {'request': request})
-
 
 @client.get('/docs/app')
 @client.get('/docs/app.html')
@@ -222,15 +209,7 @@ async def lk(request: Request):
 async def train(request: Request):
     return HTMLResponse(open('templates/site/train.html').read())
 
-@client.get('/parse')
-async def parse(request: Request):
-    return HTMLResponse(open('templates/site/parse.html').read())
 
 @client.get('/predict')
 async def predict(request: Request):
     return HTMLResponse(open('templates/site/predict.html').read())
-
-
-@client.get('/dashboard')
-async def dashboard(request: Request):
-    return HTMLResponse(open('templates/site/dashboard.html').read())

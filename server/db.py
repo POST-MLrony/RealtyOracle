@@ -3,8 +3,7 @@ import databases
 import ormar
 
 # Определение URL базы данных (в данном случае, PostgreSQL)
-DATABASE_URL = "postgresql://leha:a11e11eo@89.232.176.235:5432/test1"
-
+DATABASE_URL = "sqlite:///./test.db"
 # Инициализация объекта базы данных с использованием databases
 database = databases.Database(DATABASE_URL)
 

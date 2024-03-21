@@ -1,4 +1,4 @@
-var url_api = "http://89.232.176.235/";
+var url_api = "https://187e-77-238-135-243.ngrok-free.app";
 var token = localStorage.getItem("token");
 document.addEventListener("DOMContentLoaded", function () {
     

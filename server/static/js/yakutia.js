@@ -4,7 +4,7 @@ $(document).ready(function() {
     });
 });
 
-var url_api = "http://89.232.176.235";
+var url_api = "https://187e-77-238-135-243.ngrok-free.app";
 $(document).ready(function () {
     $('.input-file input[type=file]').on('change', function(){
       let file = this.files[0];
