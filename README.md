@@ -1,6 +1,6 @@
 # RealtyOracle
 
-![RealtyOracle Logo](link/to/logo.png)
+![RealtyOracle Logo](logo.png)
 
 **Проект "DepartureDynamics" разработан командой "Oaks Dungeon" с целью предоставления сервиса по анализу вероятности увольнения сотрудников на основе статистики электронных писем.**
 
