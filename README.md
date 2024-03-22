@@ -1,6 +1,6 @@
 # RealtyOracle
 
-<div style="text-align: center;">
+<div style="align: center;">
     <img src="logo.png" alt="RealtyOracle Logo" style="display: block; margin: 0 auto;" width="50%" height="50%">
 </div>
 
