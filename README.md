@@ -1,10 +1,10 @@
 # RealtyOracle
 
-<div style="text-align: center;">
+<div style="display: flex; justify-content: center;">
     <img src="logo.png" alt="RealtyOracle Logo" width="50%" height="50%">
 </div>
 
-**Проект "DepartureDynamics" разработан командой "Oaks Dungeon" с целью предоставления сервиса по анализу вероятности увольнения сотрудников на основе статистики электронных писем.**
+**Проект "RealtyOracle" разработан командой "POST MLrony" с целью предоставления сервиса по анализу вероятности увольнения сотрудников на основе статистики электронных писем.**
 
 ## О проекте
 
