@@ -254,12 +254,13 @@ p {
   padding: 20px;
   border: 1px solid #888;
   width: calc(var(--index) * 40); /* Можно регулировать ширину */
-  height: calc(var(--index) * 25);
+  height: calc(var(--index) * 29);
 }
 
 .modal-content p {
   color:black;
   font-weight: bold;
+  font-size: 25px;
 }
 
 .close {
@@ -284,8 +285,100 @@ p {
   padding: 20px;
   border-radius: 8px; /* Скругление углов */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень для эффекта всплывания */
-  margin-top: 20px; /* Отступ сверху */
+  margin-top: 10px; /* Отступ сверху */
   width: auto; /* Автоматическая ширина в зависимости от содержимого */ /* Максимальная ширина */
   height: calc(var(--index) * 20);
   width: calc(var(--index * 30));
+}
+
+/* Стилизация placeholder для выбранного поля ввода */
+#selectedLocation::placeholder {
+  color: #a0a0a0; /* Цвет текста */
+  font-style: italic; /* Курсивный стиль текста */
+  font-weight: bold; /* Жирный текст */
+}
+
+/* Стилизация самого поля ввода */
+#selectedLocation {
+  border: 2px solid #f0f0f0; /* Цвет границы */
+  border-radius: 5px; /* Скругление углов */
+  padding: 10px; /* Внутренние отступы */
+  color:black;
+  margin-top: 5px; /* Внешний отступ сверху */
+  width: calc(100% - 24px); /* Ширина поля, адаптированная под padding и border */
+  box-sizing: border-box; /* Учитываем padding и border в ширине */
+  font-size: 16px; /* Размер шрифта */
+  margin: 20px;
+}
+
+/* Дополнительные стили для улучшения внешнего вида при фокусе */
+#selectedLocation:focus {
+  border-color: #007bff; /* Цвет границы при фокусе */
+  outline: none; /* Убираем стандартный outline */
+}
+
+#confirmSelection {
+  background-color: #4CAF50; /* Зеленый фон */
+  color: white; /* Белый текст */
+  padding: 10px 20px; /* Внутренние отступы */
+  border: none; /* Убрать границу */
+  border-radius: 5px; /* Скругленные углы */
+  cursor: pointer; /* Курсор в виде указателя */
+  font-size: 16px; /* Размер шрифта */
+  transition: background-color 0.3s, transform 0.2s; /* Анимация для фона и нажатия */
+}
+
+#confirmSelection:hover {
+  background-color: #45a049; /* Темно-зеленый фон при наведении */
+}
+
+#confirmSelection:active {
+  transform: scale(0.98); /* Легкое уменьшение при нажатии */
+}
+
+#addressInput {
+  width: 100%; /* Занимает всю доступную ширину */
+  padding: 10px; /* Поле внутри для текста */
+  margin: 10px 0; /* Отступ сверху и снизу */
+  border: 1px solid #ccc; /* Граница серого цвета */
+  border-radius: 4px; /* Скругление углов */
+  box-sizing: border-box; /* Размеры включают внутренние отступы и границу */
+  background-color: #f8f8f8; /* Светло-серый фон */
+  
+  font-size: 16px; /* Размер шрифта */
+  color: #333; /* Цвет текста */
+  transition: border-color 0.3s, background-color 0.3s; /* Плавное изменение цвета границы и фона */
+}
+
+#addressInput:focus {
+  border-color: #4CAF50; /* Зеленая граница при фокусе */
+  outline: none; /* Убрать стандартный outline */
+  background-color: #e9ffe9; /* Светло-зеленый фон при фокусе */
+}
+
+#addressInput::placeholder {
+  color: #aaa; /* Цвет текста placeholder */
+  font-style: italic; /* Курсивный стиль для placeholder */
+}
+
+#selectAddress {
+  background-color: #008CBA; /* Синий фон */
+  color: white; /* Белый текст */
+  padding: 12px 24px; /* Внутренние отступы */
+  font-size: 16px; /* Размер шрифта */
+  cursor: pointer; /* Курсор в виде указателя */
+  border: none; /* Убрать стандартную рамку */
+  border-radius: 5px; /* Скруглённые углы */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Плавный переход для фона и тени */
+  outline: none; /* Убрать контур при фокусе */
+}
+
+#selectAddress:hover {
+  background-color: #007B9E; /* Темно-синий фон при наведении */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Тень при наведении */
+}
+
+#selectAddress:active {
+  background-color: #006A8E; /* Ещё более темный синий при нажатии */
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2); /* Меньшая тень при нажатии */
 }

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../static/spb.css">
     <script src="../static/ymap.js" defer></script>
     <script src="../static/modal.js" defer></script>
+    <script src="../static/submit.js" defer></script>
+
 </head>
 <body>
     <div class="container">
@@ -25,6 +27,8 @@
                 <span class="close">&times;</span>
                 <p>Введите адрес или выберите точку на карте</p>
                 <div id="map" class="yamap"></div>
+                <input type="text" id="selectedLocation" placeholder="Выбранное местоположение будет отображаться здесь" readonly>
+                <button id="confirmSelection">Подтвердить</button>
             </div>
         </div>
 
