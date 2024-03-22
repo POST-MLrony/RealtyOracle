@@ -1,7 +1,7 @@
 # RealtyOracle
 
-<div style="display: flex; justify-content: center;">
-    <img src="logo.png" alt="RealtyOracle Logo" width="50%" height="50%">
+<div style="text-align: center;">
+    <img src="logo.png" alt="RealtyOracle Logo" style="display: block; margin: 0 auto;" width="50%" height="50%">
 </div>
 
 **Проект "RealtyOracle" разработан командой "POST MLrony" с целью предоставления сервиса по анализу вероятности увольнения сотрудников на основе статистики электронных писем.**
