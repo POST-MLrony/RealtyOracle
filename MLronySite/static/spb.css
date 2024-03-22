@@ -5,12 +5,29 @@ body, html {
     
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 input[type="text"] {
     box-sizing: border-box; /* Включает padding и border в общий размер элемента */
     padding: 10px; /* Размер внутренних отступов */
     max-height: 100px;
     border: none; /* Удалит рамку */
   }
+
+input[type="number"] {
+  box-sizing: border-box; /* Включает padding и border в общий размер элемента */
+  padding: 10px; /* Размер внутренних отступов */
+  max-height: 100px;
+  border: none; /* Удалит рамку */
+}
   
 
 .input-field {
@@ -185,6 +202,12 @@ p {
     background-color: #573781;
     /* Увеличение размера кнопки при наведении */
     transform: scale(1.05);
+}
+
+.start-button:active {
+  /* Изменяем стили при нажатии */
+  background-color: #331757;
+  transform: scale(0.95); /* Уменьшаем размер кнопки */
 }
 
 .team-info h2, .team-info p {

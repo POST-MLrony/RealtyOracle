@@ -1,6 +1,30 @@
 function init() {
+    var path = window.location.pathname;
+    var page = path.split("/").pop(); // Получаем название файла
+    var center;
+    // Установка центра карты в зависимости от названия файла
+    switch (page) {
+        case 'nn.html':
+            center = [56.3287, 44.002]; // Координаты для страницы page1.html
+            break;
+        case 'novosibirsk.html':
+            center = [55.0415, 82.9346]; // Координаты для страницы page2.html
+            break;
+        case 'kazan.html':
+            center = [55.7887, 49.1221];
+            break;
+        case 'spb.html':
+            center = [59.9386, 30.3141];
+            break;  
+        case 'ekb.html':
+            center = [56.8519, 60.6122];
+            break; 
+        case 'msk.html':
+            center = [55.7522, 37.6156];
+            break; 
+    }
     var myMap = new ymaps.Map('map', {
-        center: [59.9386, 30.3141],
+        center: center,
         zoom: 12
     });
     myMap.controls.remove('searchControl');
@@ -26,6 +50,7 @@ function init() {
             var address = firstGeoObject.getAddressLine();
             document.getElementById('selectedLocation').value = address;
         });
+        window.GlobCoords = coords
     });
 
     var searchControl = new ymaps.control.SearchControl({
@@ -51,6 +76,7 @@ function init() {
                 var address = firstGeoObject.getAddressLine();
                 document.getElementById('selectedLocation').value = address;
             });
+            window.GlobCoords = coords
         });
     });
 }
