@@ -275,15 +275,16 @@ p {
   background-color: #fefefe;
   margin: calc(var(--index) * 1) auto; /* 15% сверху и по центру */
   padding: 20px;
+  padding-top: 10px;
   border: 1px solid #888;
   width: calc(var(--index) * 40); /* Можно регулировать ширину */
-  height: calc(var(--index) * 29);
+  height: calc(var(--index) * 30);
 }
 
 .modal-content p {
   color:black;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .close {
@@ -310,7 +311,7 @@ p {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень для эффекта всплывания */
   margin-top: 10px; /* Отступ сверху */
   width: auto; /* Автоматическая ширина в зависимости от содержимого */ /* Максимальная ширина */
-  height: calc(var(--index) * 20);
+  height: calc(var(--index) * 19);
   width: calc(var(--index * 30));
 }
 
@@ -345,6 +346,7 @@ p {
   color: white; /* Белый текст */
   padding: 10px 20px; /* Внутренние отступы */
   border: none; /* Убрать границу */
+  margin-top: 10px;
   border-radius: 5px; /* Скругленные углы */
   cursor: pointer; /* Курсор в виде указателя */
   font-size: 16px; /* Размер шрифта */
@@ -362,7 +364,7 @@ p {
 #addressInput {
   width: 100%; /* Занимает всю доступную ширину */
   padding: 10px; /* Поле внутри для текста */
-  margin: 10px 0; /* Отступ сверху и снизу */
+  margin: 5px 0; /* Отступ сверху и снизу */
   border: 1px solid #ccc; /* Граница серого цвета */
   border-radius: 4px; /* Скругление углов */
   box-sizing: border-box; /* Размеры включают внутренние отступы и границу */
@@ -404,4 +406,39 @@ p {
 #selectAddress:active {
   background-color: #006A8E; /* Ещё более темный синий при нажатии */
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2); /* Меньшая тень при нажатии */
+}
+
+#districtSelector {
+  width: 50%;
+  display: block;
+  padding: 10px 20px; /* Увеличенные внутренние отступы */
+  margin: 0 20px;
+  border: 2px solid #e2e2e2; /* Обновлённый цвет границы */
+  border-radius: 8px; /* Более крупное скругление углов */
+  box-sizing: border-box;
+  background-color: #fff; /* Белый фон */
+  font-size: 16px; /* Увеличенный размер шрифта */
+  font-family: 'Arial', sans-serif; /* Современный шрифт */
+  color: #555; /* Обновлённый цвет текста */
+  transition: border-color 0.3s ease-in-out, box-shadow 0.2s ease-in-out; /* Добавлен эффект тени */
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#districtSelector:hover, #districtSelector:focus {
+  border-color: #a2a2a2; /* Изменение цвета границы при наведении/фокусе */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Добавление тени для эффекта "поднятой" кнопки */
+}
+
+/* Кастомная стрелка */
+#districtSelector:after {
+  content: '\25BC';
+  color: #555; /* Цвет стрелки */
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }

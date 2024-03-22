@@ -28,7 +28,147 @@
                 <p>Введите адрес или выберите точку на карте</p>
                 <div id="map" class="yamap"></div>
                 <input type="text" id="selectedLocation" placeholder="Выбранное местоположение будет отображаться здесь" readonly>
-                <button id="confirmSelection">Подтвердить</button>
+                <select id="districtSelector" style="overflow-y: auto;">
+                    <option value="" disabled selected>Выберите район</option>
+                    <option>Агалатовское сельское поселение</option>
+                    <option>Адмиралтейский</option>
+                    <option>Аннино пос</option>
+                    <option>Бегуницы д</option>
+                    <option>Большие Колпаны д</option>
+                    <option>Большой Сабск д</option>
+                    <option>Бугры д</option>
+                    <option>Бугры п</option>
+                    <option>Ваганово-2 п</option>
+                    <option>Василеостровский</option>
+                    <option>Воейково п</option>
+                    <option>Всеволожск г</option>
+                    <option>Всеволожский</option>
+                    <option>Всеволожское городское поселение</option>
+                    <option>Выборг г</option>
+                    <option>Выборгский</option>
+                    <option>Вырица п</option>
+                    <option>Гатчина г</option>
+                    <option>Горелово</option>
+                    <option>Город Первых ЖК</option>
+                    <option>Гостилицы дер</option>
+                    <option>Гостицы дер</option>
+                    <option>Дубровка ГП</option>
+                    <option>Дубровка п</option>
+                    <option>Елизаветино п</option>
+                    <option>Ермилово пос</option>
+                    <option>Жилгородок пос</option>
+                    <option>Заневка д</option>
+                    <option>Заневское городское поселение</option>
+                    <option>Зеленогорск г</option>
+                    <option>Ивангород г</option>
+                    <option>Калининский</option>
+                    <option>Кальтино д</option>
+                    <option>Касимово д</option>
+                    <option>Кингисепп г</option>
+                    <option>Кировск г</option>
+                    <option>Кировский</option>
+                    <option>Коломяги муниципальный округ</option>
+                    <option>Колпино г</option>
+                    <option>Колтуши д</option>
+                    <option>Коммунар г</option>
+                    <option>Коммунары пос</option>
+                    <option>Копорское сельское поселение</option>
+                    <option>Копорье с</option>
+                    <option>Коркино дер. (Тосненский р-н)</option>
+                    <option>Красногвардейский</option>
+                    <option>Красное Село</option>
+                    <option>Красносельский</option>
+                    <option>Красный Бор пос</option>
+                    <option>Кронштадт</option>
+                    <option>Кронштадтский</option>
+                    <option>Кудрово</option>
+                    <option>Кудрово г</option>
+                    <option>Кузьмоловский пос</option>
+                    <option>Куйвозовское сельское поселение</option>
+                    <option>Курортный</option>
+                    <option>Лаголово дер</option>
+                    <option>Левашово п</option>
+                    <option>Ленинское пос</option>
+                    <option>Лесколово пос</option>
+                    <option>Ломоносов г</option>
+                    <option>Луга г</option>
+                    <option>Лукаши п</option>
+                    <option>Малое Верево д</option>
+                    <option>Малое Карлино дер</option>
+                    <option>Металлострой п</option>
+                    <option>Мистолово д</option>
+                    <option>Молодежное пос</option>
+                    <option>Московский</option>
+                    <option>Мурино</option>
+                    <option>Муринское городское поселение</option>
+                    <option>Невский</option>
+                    <option>Никольское г</option>
+                    <option>Новогорелово пос</option>
+                    <option>Новое Девяткино д</option>
+                    <option>Новосаратовка д</option>
+                    <option>Новосветское СП</option>
+                    <option>Новоселье пос</option>
+                    <option>Новый Учхоз п</option>
+                    <option>Нурма дер</option>
+                    <option>Оредеж п</option>
+                    <option>Оржицы дер</option>
+                    <option>Отрадное г</option>
+                    <option>Павлово г</option>
+                    <option>Павлово пос</option>
+                    <option>Павлово с</option>
+                    <option>Павловск г</option>
+                    <option>Парголово п</option>
+                    <option>Первомайское пос</option>
+                    <option>Песочный п</option>
+                    <option>Петергоф г</option>
+                    <option>Петроградский</option>
+                    <option>Петродворцовый</option>
+                    <option>Пикколово дер</option>
+                    <option>Почап д</option>
+                    <option>Приморский</option>
+                    <option>Пудомяги д</option>
+                    <option>Пушкин г</option>
+                    <option>Пушкинский</option>
+                    <option>Разметелево д</option>
+                    <option>Рахья п</option>
+                    <option>Романовка д</option>
+                    <option>Романовское сельское поселение</option>
+                    <option>Рощино пос</option>
+                    <option>Рябово пос</option>
+                    <option>Сагомилье д</option>
+                    <option>Свердлова им. пос</option>
+                    <option>Севребрянский п</option>
+                    <option>Сертолово</option>
+                    <option>Сертолово-2 микрорайон</option>
+                    <option>Сестрорецк г</option>
+                    <option>Сиверский ГП</option>
+                    <option>Скотное д</option>
+                    <option>Сланцы г</option>
+                    <option>Сосновый Бор г</option>
+                    <option>Старая д</option>
+                    <option>Стрельна пос</option>
+                    <option>Тайцы п</option>
+                    <option>Тельмана пос</option>
+                    <option>Тельмановское СП</option>
+                    <option>Торосово п</option>
+                    <option>Тосно г</option>
+                    <option>Узигонты дер</option>
+                    <option>Усть-Славянка</option>
+                    <option>Фрунзенский</option>
+                    <option>Фёдоровское пос</option>
+                    <option>Центральный</option>
+                    <option>Шлиссельбург г</option>
+                    <option>Шум с</option>
+                    <option>Шушары п</option>
+                    <option>Щеглово п</option>
+                    <option>Щегловское сельское поселение</option>
+                    <option>Юкки д</option>
+                    <option>Янино-1</option>
+                    <option>Янино-1 п</option>
+                    <option>Янино-2 д</option>
+                    <!-- Добавьте остальные опции аналогичным образом -->
+                </select>
+                <button id="confirmSelection">Подтвердить</button> 
             </div>
         </div>
 
