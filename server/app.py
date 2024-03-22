@@ -4,41 +4,22 @@ import sqlalchemy
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from client import client
+from catboost import CatBoostRegressor
+
+async def lifespan(app: FastAPI):
+    """Подгрузка данных при старте приложения (подгрузка моделей)"""
+    model_nn = CatBoostRegressor()
+    model_nn.load_model("static/models/model_nn.cbm")
+    app.state.model_nn = model_nn
+    print("ML model loaded")
+    yield
+    # При завершении работы приложения
+    del app.state.model_nn
+    print("ML model unloaded")
+
 
 # Создание экземпляра FastAPI
-app = FastAPI()
-
-# Привязка объекта базы данных к экземпляру приложения
-app.state.database = database.database
-
-# Создание соединения с базой данных с использованием SQLAlchemy
-engine = sqlalchemy.create_engine(database.DATABASE_URL)
-
-# Создание таблиц в базе данных при запуске приложения
-database.metadata.create_all(engine)
-
-# Обработчики событий при запуске и завершении приложенияaiosqlite
-@app.on_event("startup")
-async def startup() -> None:
-    """
-    Обработчик события "startup". Выполняется при старте приложения.
-
-    Устанавливает соединение с базой данных.
-    """
-    database_ = app.state.database
-    if not database_.is_connected:
-        await database_.connect()
-
-@app.on_event("shutdown")
-async def shutdown() -> None:
-    """
-    Обработчик события "shutdown". Выполняется при завершении приложения.
-
-    Разрывает соединение с базой данных.
-    """
-    database_ = app.state.database
-    if database_.is_connected:
-        await database_.disconnect()
+app = FastAPI(lifespan=lifespan)
 
 # Подключение роутера из модуля api.controller с префиксом и тегом
 from api.controller import controller

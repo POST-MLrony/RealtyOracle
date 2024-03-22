@@ -1,81 +1,80 @@
-import jwt
+import pandas as pd
+from math import sin, cos, sqrt, atan2, radians
+import json
+
+def excel2dict(path: str) -> dict:
+    df = pd.read_excel(path)
+    return df.to_dict(orient="records")
 
 
-async def check_username_unique(username: str, user: object) -> bool:
+def haversine(lat1, lon1, lat2, lon2):
     """
-    Проверяет уникальность имени пользователя.
+    Вычисляет расстояние между двумя точками на глобусе по координатам широты и долготы.
 
-    :param username: Имя пользователя для проверки.
-    :param user: Объект пользователя для взаимодействия с базой данных.
-    :return: True, если имя уникально, в противном случае - False.
+    Аргументы:
+    lat1 (float): Широта первой точки в градусах.
+    lon1 (float): Долгота первой точки в градусах.
+    lat2 (float): Широта второй точки в градусах.
+    lon2 (float): Долгота второй точки в градусах.
+
+    Возвращает:
+    float: Расстояние между двумя точками в километрах.
+
+    Пример использования:
+    >>> haversine(52.2296756, 21.0122287, 52.406374, 16.9251681)
+    279.35290160386563
     """
-    return not await user.objects.filter(username=username).exists()
+    # Радиус Земли в километрах
+    R = 6371.0
+
+    # Преобразование координат в радианы
+    lat1 = radians(lat1)
+    lon1 = radians(lon1)
+    lat2 = radians(lat2)
+    lon2 = radians(lon2)
+
+    # Разница между широтами и долготами
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+
+    # Формула гаверсинусов
+    a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+
+    # Расстояние между точками
+    distance = R * c
+
+    return distance
 
 
-async def check_email_unique(email: str, user: object) -> bool:
+def find_nearest_metro(building_lat, building_lon, metro_stations):
     """
-    Проверяет уникальность электронной почты.
+    Находит ближайшую станцию метро к заданному зданию.
 
-    :param email: Адрес электронной почты для проверки.
-    :param user: Объект пользователя для взаимодействия с базой данных.
-    :return: True, если адрес уникален, в противном случае - False.
+    Аргументы:
+    building_lat (float): Широта здания.
+    building_lon (float): Долгота здания.
+    metro_stations (list): Список словарей с информацией о станциях метро.
+
+    Возвращает:
+    str: Название ближайшей станции метро.
     """
-    return not await user.objects.filter(email=email).exists()
+    nearest_metro = None
+    min_distance = float('inf')
+
+    for station in metro_stations:
+        metro_lat = station['geo_lat']
+        metro_lon = station['geo_lon']
+        distance = haversine(building_lat, building_lon, metro_lat, metro_lon)
+        if distance < min_distance:
+            min_distance = distance
+            nearest_metro = station['value']
+
+    return nearest_metro
 
 
-async def get_user_from_token(token: str, user: object):
-    """
-    Получает пользователя по токену.
-
-    :param token: Токен для декодирования.
-    :param user: Объект пользователя для взаимодействия с базой данных.
-    :return: Объект пользователя, соответствующий идентификатору из токена.
-    """
-    payload = jwt.decode(token, 'allelleo', algorithms=['HS256'])
-    user_id = payload.get('user_id')
-    return await user.objects.get_or_none(id=user_id)
-
-
-async def check_model_name(model_name: str, Model) -> bool:
-    """
-    Проверяет уникальность названия модели.
-
-    :param model_name: Название модели для проверки.
-    :param Model: Класс модели для взаимодействия с базой данных.
-    :return: True, если модель с таким названием уже существует, в противном случае - False.
-    """
-    return await Model.objects.filter(model_name=model_name).exists()
-
-
-async def check_predict_name(predict_name: str, Model) -> bool:
-    """
-    Проверяет уникальность названия прогноза.
-
-    :param predict_name: Название прогноза для проверки.
-    :param Model: Класс модели для взаимодействия с базой данных.
-    :return: True, если прогноз с таким названием уже существует, в противном случае - False.
-    """
-    return await Model.objects.filter(predict_name=predict_name).exists()
-
-
-async def check_mail_parse(path_to_save: str, Model, user_id: int):
-    """
-    Проверяет наличие файла с указанным путем для конкретного пользователя и модели.
-
-    :param path_to_save: Путь к сохраненным данным.
-    :param Model: Класс модели для взаимодействия с базой данных.
-    :param user_id: Идентификатор пользователя.
-    :return: True, если путь совпадает с одним из путей данных модели, в противном случае - False.
-    """
-    return any(path_to_save in model.data_path for model in await Model.objects.filter(user_id=user_id).all())
-
-
-async def check_file_expansion(filename: str, expansion: str):
-    """
-    Проверяет расширение файла.
-
-    :param filename: Имя файла для проверки.
-    :param expansion: Ожидаемое расширение файла.
-    :return: True, если расширение совпадает, в противном случае - False.
-    """
-    return filename.endswith(expansion)
+def open_json(path: str) -> dict:   
+    with open(path, 'r', encoding='utf-8') as f:
+        json_data = json.load(f)
+    df = pd.json_normalize(json_data)
+    return df
