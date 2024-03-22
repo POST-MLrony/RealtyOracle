@@ -3,8 +3,12 @@ from .models import Town
 from .metro_info import get_metro_info_by_city, get_coordinates_by_city
 from .preprocessing import find_nearest_metro
 from .utils import haversine
-from catboost import CatBoostRegressor
+from catboost import CatBoostRegressor, Pool
 import pandas as pd
+import shap
+import io
+import base64
+import matplotlib.pyplot as plt
 
 controller = APIRouter()
 
@@ -13,6 +17,16 @@ controller = APIRouter()
 async def receive_data(town: Town):
     print(town)
     return {"message": "Data received successfully"}
+
+
+def generate_shap_waterfall(data, explainer):
+    shap_values = explainer(data)
+    plt.figure()
+    shap.plots.waterfall(shap_values[0], show=False)
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format="png")
+    plt.close()
+    return buffer.getvalue()
 
 
 @controller.post("/nn/")
@@ -42,12 +56,37 @@ async def receive_data(town: Town, request: Request):
         "dist_to_metro": min_distance,
         "distance_to_centre": dist_to_centre,
     }
-    data = pd.Series(data)
+    data = pd.DataFrame(data, index=[1])
+    cat_ind = ["meta.district", "wall_id", "type", "balcon", "keep", "nearest_metro"]
+    data[cat_ind] = data[cat_ind].astype("category")
+    feature_names = [
+        "Площадь",
+        "Количество этажей",
+        "Количество спален",
+        "Евро ремонт",
+        "Тип стен",
+        "Количество Комнат",
+        "Тип объекта",
+        "Этаж",
+        "Тип балкона",
+        "Студия",
+        "Площадь",
+        "Возраст здания",
+        "Вид ремонта",
+        "Ближайшее метро",
+        "Расстояние до метро",
+        "Расстояние до центра",
+    ]
     y_pred = request.app.state.model_nn.predict(data)
-    print(y_pred)
+    explainer = shap.TreeExplainer(
+        request.app.state.model_nn,
+    )
+    shap_image_bytes = generate_shap_waterfall(data, explainer)
+    shap_image_base64 = base64.b64encode(shap_image_bytes).decode("utf-8")
     return {
-        "predict": y_pred,
-        "nearest_metro": nearest_metro,
-        "dist_to_metro": min_distance,
-        "dist_to_centre": dist_to_centre,
+        "predict": float(y_pred),
+        "nearest_metro": str(nearest_metro),
+        "dist_to_metro": float(min_distance),
+        "dist_to_centre": float(dist_to_centre),
+        "shap_waterfall_image": shap_image_base64,
     }
