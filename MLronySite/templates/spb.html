@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RealtyOracle</title>
-    <link rel="stylesheet" href="../static/spb.css">
+    <link rel="stylesheet" href="../static/cities.css">
     <script src="../static/ymap.js" defer></script>
     <script src="../static/modal.js" defer></script>
     <script src="../static/submit.js" defer></script>
-    <script src="..\static\read_data_towns.js"></script>
-    <script src="..\static\try_year.js"></script>
+    <script src="../static/read_data_towns.js"></script>
+    <script src="../static/try_year.js"></script>
 </head>
 <body>
     <div class="container">
@@ -262,7 +262,28 @@
         <br>
 
         </div>
+        <script>
+            document.getElementById('sendData').addEventListener('click', function() {
+                const container = document.querySelector('.container');
         
+                const oldResults = document.getElementById('results');
+                if (oldResults) {
+                    oldResults.remove();
+                }
+        
+                const resultsDiv = document.createElement('div');
+                resultsDiv.id = 'results';
+                resultsDiv.innerHTML = `
+                    <div class="result-item"><strong>Предсказанная стоимость квартиры:</strong> <span id="predictedPrice">Загрузка...</span></div>
+                    <div class="result-item"><strong>Ближайшее метро:</strong> <span id="nearestMetro">Загрузка...</span></div>
+                    <div class="result-item"><strong>Расстояние до ближайшего метро:</strong> <span id="metroDistance">Загрузка...</span></div>
+                    <div class="result-item"><strong>Расстояние до центра города:</strong> <span id="cityCenterDistance">Загрузка...</span></div>
+                    <div class="result-item"><strong>Изображение:</strong> <div id="imagePlaceholder">Изображение будет здесь</div></div>
+                `;
+                container.appendChild(resultsDiv);
+        
+            });
+        </script>
         <div class="foot">
             <footer>
                 <p>&copy; RealtyOracle, 2024</p>

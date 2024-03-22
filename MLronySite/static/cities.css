@@ -11,10 +11,6 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
 input[type="text"] {
     box-sizing: border-box; /* Включает padding и border в общий размер элемента */
     padding: 10px; /* Размер внутренних отступов */
@@ -441,4 +437,53 @@ p {
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+}
+
+
+#results {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-size: 16px;
+}
+
+.result-item {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-item strong {
+  color: #333;
+  font-weight: 600;
+}
+
+#imagePlaceholder {
+  width: 100%;
+  height: 200px;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-style: italic;
+  border-radius: 4px;
+}
+
+/* Подправляем последний элемент, чтобы не было нижнего отступа */
+.result-item:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* Стиль для текста загрузки */
+#results span {
+  color: #555;
 }
