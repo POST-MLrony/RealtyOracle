@@ -8,7 +8,8 @@
     <script src="../static/ymap.js" defer></script>
     <script src="../static/modal.js" defer></script>
     <script src="../static/submit.js" defer></script>
-
+    <script src="..\static\try_year.js"></script>
+    <script src="..\static\read_data_towns.js"></script>
 </head>
 <body>
     <div class="container">
@@ -157,7 +158,6 @@
             <span class="description-block-params">Год постройки</span>
             <div class="divider"></div>
             <input type="number" placeholder="Год" id="building_year" class="input-field" min="1800" max="2024" />
-            <script src="..\static\try_year.js"></script>
             <span class="description-block-params">Ремонт</span>
             <div class="divider"></div>
             <select id="keep">
@@ -231,8 +231,7 @@
         </div>
 
 
-        <button class="start-button" id="sendData" onclick="myFunction()">Рассчитать</button>
-        <script src="..\static\read_data_towns.js"></script>
+        <button class="start-button" id="sendData">Рассчитать</button>
         <br>
         <br>
         <br>

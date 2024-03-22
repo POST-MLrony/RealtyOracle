@@ -6,9 +6,11 @@ document.getElementById('sendData').addEventListener('click', function() {
     const floor = document.getElementById('floor').value; 
     const wall_id = document.getElementById('wall_id').value;
     const class_ = document.getElementById('class').value;
+    var meta_district = document.getElementById('districtSelector');
+    var selectedText = meta_district.options[meta_district.selectedIndex].text;
 
     // Здесь URL, на который вы отправляете запрос. Замените его на актуальный URL вашего API
-    const url = "https://eoqzc7r8qiy6u3p.m.pipedream.net";
+    const url = "https://b377-77-238-135-243.ngrok-free.app/api/v1/receive_data/";
 
     // Подготавливаем данные для отправки
     let studio = false; // Исходно предполагаем, что это не студия
@@ -20,15 +22,16 @@ document.getElementById('sendData').addEventListener('click', function() {
   
 
     const data = {
-        square: square,
-        rooms: rooms,
-        floors: floors,
-        type: type,
-        floor: floor,
-        lo: window.GlobCoords[1],
-        la: window.GlobCoords[0],
-        wall_id: wall_id,
-        class_: class_
+        square: Number(square),
+        rooms: Number(rooms),
+        floors: Number(floors),
+        type: String(type),
+        floor: Number(floor),
+        lo: Number(window.GlobCoords[1]),
+        la: Number(window.GlobCoords[0]),
+        wall_id: Number(wall_id),
+        class_: String(class_),
+        district: String(selectedText)
     };
 
     // Отправляем данные

@@ -11,9 +11,12 @@ document.getElementById('sendData').addEventListener('click', function() {
     const bedrooms_cnt = document.getElementById('bedrooms_cnt').value; 
     const mortgage = document.getElementById('mortgage').value;
     const wall_id = document.getElementById('wall_id').value;
+    const euro = document.getElementById('euro').value;
+    var meta_district = document.getElementById('districtSelector');
+    var selectedText = meta_district.options[meta_district.selectedIndex].text;
 
     // Здесь URL, на который вы отправляете запрос. Замените его на актуальный URL вашего API
-    const url = "https://eoqzc7r8qiy6u3p.m.pipedream.net";
+    const url = "https://b377-77-238-135-243.ngrok-free.app/api/v1/nn/";
 
     // Подготавливаем данные для отправки
     let studio = false; // Исходно предполагаем, что это не студия
@@ -25,20 +28,22 @@ document.getElementById('sendData').addEventListener('click', function() {
   
 
     const data = {
-        square: square,
-        rooms: rooms,
-        building_year: building_year,
-        keep: keep,
-        floors: floors,
-        type: type,
-        floor: floor,
-        balcon: balcon,
-        bedrooms_cnt: bedrooms_cnt,
-        studio: studio,
-        mortgage: mortgage,
-        lo: window.GlobCoords[1],
-        la: window.GlobCoords[0],
-        wall_id: wall_id
+        square: Number(square),
+        rooms: Number(rooms),
+        building_year: Number(building_year),
+        keep: String(keep),
+        floors: Number(floors),
+        type: String(type),
+        floor: Number(floor),
+        balcon: String(balcon),
+        bedrooms_cnt: Number(bedrooms_cnt),
+        studio: Boolean(studio),
+        mortgage: Boolean(mortgage),
+        lo: Number(window.GlobCoords[1]),
+        la: Number(window.GlobCoords[0]),
+        wall_id: String(wall_id),
+        euro: Boolean(euro),
+        district: String(selectedText)
     };
 
     // Отправляем данные
