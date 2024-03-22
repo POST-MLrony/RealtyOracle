@@ -166,3 +166,4 @@ nn.json
 novosibirsk.json
 spb.json
 catboost_info/
+catboost_info/*
