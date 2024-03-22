@@ -28,6 +28,177 @@
                 <p>Введите адрес или выберите точку на карте</p>
                 <div id="map" class="yamap"></div>
                 <input type="text" id="selectedLocation" placeholder="Выбранное местоположение будет отображаться здесь" readonly>
+                <select id="districtSelector" style="overflow-y: auto;">
+                    <option value="" disabled selected>Выберите район</option>
+                    <option>А-105</option>
+                    <option>Академический</option>
+                    <option>Алексеевский</option>
+                    <option>Алтуфьевский</option>
+                    <option>Арбат</option>
+                    <option>Аэропорт</option>
+                    <option>Бабушкинский</option>
+                    <option>Басманный</option>
+                    <option>Беговой</option>
+                    <option>Бибирево</option>
+                    <option>Бирюлёво Восточное</option>
+                    <option>Бирюлёво Западное</option>
+                    <option>Богородское</option>
+                    <option>Боровское шоссе</option>
+                    <option>Братеево</option>
+                    <option>Бускудниковский</option>
+                    <option>Бутырский</option>
+                    <option>Варшавское шоссе</option>
+                    <option>Вешняки</option>
+                    <option>Внуково</option>
+                    <option>Войковский</option>
+                    <option>Волоколамское шоссе</option>
+                    <option>Восточное Дегунино</option>
+                    <option>Восточное Измайлово</option>
+                    <option>Восточный</option>
+                    <option>Выхино-Жулебино</option>
+                    <option>Гагаринский</option>
+                    <option>Головинский</option>
+                    <option>Голубое деревня</option>
+                    <option>Гольяново</option>
+                    <option>Даниловский</option>
+                    <option>Дмитровский</option>
+                    <option>Дмитровское шоссе</option>
+                    <option>Донской</option>
+                    <option>Дорогомилово</option>
+                    <option>Егорьевское шоссе</option>
+                    <option>Замоскворечье</option>
+                    <option>Западное Дегунино</option>
+                    <option>Зюзино</option>
+                    <option>Зябликово</option>
+                    <option>Ивановское</option>
+                    <option>Измайлово</option>
+                    <option>Ильинское шоссе</option>
+                    <option>Капотня</option>
+                    <option>Киевское шоссе</option>
+                    <option>Клин</option>
+                    <option>Коньково</option>
+                    <option>Коптево</option>
+                    <option>Косино-Ухтомский</option>
+                    <option>Котловка</option>
+                    <option>Красносельский</option>
+                    <option>Крылатское</option>
+                    <option>Крюково</option>
+                    <option>Кузьминки</option>
+                    <option>Кунцево</option>
+                    <option>Куркино</option>
+                    <option>Левобережный</option>
+                    <option>Ленинградское шоссе</option>
+                    <option>Лефортово</option>
+                    <option>Лианозово</option>
+                    <option>Ломоносовский</option>
+                    <option>Лосиноостровский</option>
+                    <option>Люблино</option>
+                    <option>М-4</option>
+                    <option>Марфино</option>
+                    <option>Марьина Роща</option>
+                    <option>Марьино</option>
+                    <option>Матушкино</option>
+                    <option>Метрогородок</option>
+                    <option>Мещанский</option>
+                    <option>Минское шоссе</option>
+                    <option>Митино</option>
+                    <option>Можайский</option>
+                    <option>Можайское шоссе</option>
+                    <option>Молжаниновский</option>
+                    <option>Москворечье-Сабурово</option>
+                    <option>Московское направление</option>
+                    <option>Нагатино-Садовники</option>
+                    <option>Нагатинский Затон</option>
+                    <option>Нагорный</option>
+                    <option>Некрасовка</option>
+                    <option>Нижегородский</option>
+                    <option>Ново-Переделкино</option>
+                    <option>Новогиреево</option>
+                    <option>Новокосино</option>
+                    <option>Новорижское шоссе</option>
+                    <option>Новорязанское шоссе</option>
+                    <option>Носовихинское шоссе</option>
+                    <option>Обручевский</option>
+                    <option>Октябрьский</option>
+                    <option>Орехово-Борисово Северное</option>
+                    <option>Орехово-Борисово Южное</option>
+                    <option>Останкинский</option>
+                    <option>Отрадное</option>
+                    <option>Очаково-Матвеевское</option>
+                    <option>Перово</option>
+                    <option>Печатники</option>
+                    <option>Покровское-Стрешнево</option>
+                    <option>Преображенское</option>
+                    <option>Пресненский</option>
+                    <option>Проспект Вернадского</option>
+                    <option>Раменки</option>
+                    <option>Ростокино</option>
+                    <option>Рублёво-Успенское шоссе</option>
+                    <option>Рязанский</option>
+                    <option>Савёлки</option>
+                    <option>Савёловский</option>
+                    <option>Свиблово</option>
+                    <option>Северное Бутово</option>
+                    <option>Северное Измайлово</option>
+                    <option>Северное Медведково</option>
+                    <option>Северное Тушино</option>
+                    <option>Северный</option>
+                    <option>Силино</option>
+                    <option>Симферовопольское шоссе</option>
+                    <option>Сокол</option>
+                    <option>Соколиная Гора</option>
+                    <option>Сокольники</option>
+                    <option>Солнцево</option>
+                    <option>Старое Крюково</option>
+                    <option>Старое Симферопольское</option>
+                    <option>Строгино</option>
+                    <option>Таганский</option>
+                    <option>Тверской</option>
+                    <option>Текстильщики</option>
+                    <option>Тимирязевский</option>
+                    <option>Тропарёво-Никулино</option>
+                    <option>Тёплый Стан</option>
+                    <option>Фили-Давыдково</option>
+                    <option>Филёвский Парк</option>
+                    <option>Хамовники</option>
+                    <option>Ховрино</option>
+                    <option>Хорошёво-Мнёвники</option>
+                    <option>Хорошёвский</option>
+                    <option>Царицыно</option>
+                    <option>Чертаново Северное</option>
+                    <option>Чертаново Центральное</option>
+                    <option>Чертаново Южное</option>
+                    <option>Черёмушки</option>
+                    <option>Щукино</option>
+                    <option>Щёлковское шоссе</option>
+                    <option>Южное Бутово</option>
+                    <option>Южное Медведково</option>
+                    <option>Южное Тушино</option>
+                    <option>Южнопортовый</option>
+                    <option>Якиманка</option>
+                    <option>Ярославский</option>
+                    <option>Ярославское шоссе</option>
+                    <option>Ясенево</option>
+                    <option>поселение Внуковское</option>
+                    <option>поселение Воскресенское</option>
+                    <option>поселение Десёновское</option>
+                    <option>поселение Киевский</option>
+                    <option>поселение Клёновское</option>
+                    <option>поселение Кокошкино</option>
+                    <option>поселение Краснопахорское</option>
+                    <option>поселение Марушкинское</option>
+                    <option>поселение Михайлово-Ярцевское</option>
+                    <option>поселение Московский</option>
+                    <option>поселение Мосрентген</option>
+                    <option>поселение Новофёдоровское</option>
+                    <option>поселение Первомайское</option>
+                    <option>поселение Роговское</option>
+                    <option>поселение Рязановское</option>
+                    <option>поселение Сосенское</option>
+                    <option>поселение Троицк</option>
+                    <option>поселение Филимонковское</option>
+                    <option>поселение Щаповское</option>
+                </select>
                 <button id="confirmSelection">Подтвердить</button>
             </div>
         </div>
