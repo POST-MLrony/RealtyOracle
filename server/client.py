@@ -13,7 +13,7 @@ async def index(request: Request):
 
 @client.get("/nn")
 async def sign_in(request: Request):
-    return HTMLResponse(open("templates/site/nn.html").read())
+    return HTMLResponse(open("templates/nn.html").read())
 
 
 @client.get("/spb")
