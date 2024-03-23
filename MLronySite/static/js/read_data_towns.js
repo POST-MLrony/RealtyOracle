@@ -15,7 +15,7 @@ document.getElementById('sendData').addEventListener('click', function() {
     var selectedText = meta_district.options[meta_district.selectedIndex].text;
 
     // Здесь URL, на который вы отправляете запрос. Замените его на актуальный URL вашего API
-    const url = "https://1331-77-238-135-243.ngrok-free.app/api/v1/nn/";
+    const url = "https://151b-77-238-135-243.ngrok-free.app/api/v1/nn/";
 
     // Подготавливаем данные для отправки
     let studio = false; // Исходно предполагаем, что это не студия
@@ -83,10 +83,10 @@ function updateUI(data) {
     const resultsDiv = document.createElement('div');
     resultsDiv.id = 'results';
     resultsDiv.innerHTML = `
-        <div class="result-item"><strong>Предсказанная стоимость квартиры:</strong> <span id="predictedPrice">${data.predict ? parseFloat(data.predict).toFixed(3) : "Недоступно"}</span></div>
+        <div class="result-item"><strong>Предсказанная стоимость квартиры:</strong> <span id="predictedPrice">${data.predict ? `${parseFloat(data.predict).toFixed(1)} рублей` : "Недоступно"}</span></div>
         <div class="result-item"><strong>Ближайшее метро:</strong> <span id="nearestMetro">${data.nearest_metro ? data.nearest_metro : "Недоступно"}</span></div>
-        <div class="result-item"><strong>Расстояние до ближайшего метро:</strong> <span id="metroDistance">${data.dist_to_metro ? `${parseFloat(data.dist_to_metro).toFixed(3)} км` : "Недоступно"}</span></div>
-        <div class="result-item"><strong>Расстояние до центра города:</strong> <span id="cityCenterDistance">${data.dist_to_centre ? `${parseFloat(data.dist_to_centre).toFixed(3)} км` : "Недоступно"}</span></div>
+        <div class="result-item"><strong>Расстояние до ближайшего метро:</strong> <span id="metroDistance">${data.dist_to_metro ? `${parseFloat(data.dist_to_metro).toFixed(1)} км` : "Недоступно"}</span></div>
+        <div class="result-item"><strong>Расстояние до центра города:</strong> <span id="cityCenterDistance">${data.dist_to_centre ? `${parseFloat(data.dist_to_centre).toFixed(1)} км` : "Недоступно"}</span></div>
         <div class="result-item"><strong>Влияние различных факторов на стоимость квартиры:</strong> <div id="imagePlaceholder"></div></div>
     `;
     container.appendChild(resultsDiv);

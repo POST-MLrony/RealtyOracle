@@ -8,7 +8,34 @@ body, html {
 :root {
     --index: calc(1vw + 1vh);
 }
+.header {
+    background: linear-gradient(135deg, #5e4181, #412356);
+    padding: var(--index) 0;
+    border-bottom: none;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое заголовка */
+    align-items: center;
+}
 
+.header-content {
+    display: flex;
+    justify-content: center; /* Дополнительное центрирование для контента */
+    align-items: center;
+    max-width: 1200px;
+    width: 100%; /* Занимает всю ширину доступного пространства */
+    padding: 0 var(--index);
+}
+
+.header-logo {
+    height: calc(var(--index) * 7);
+    width: auto;
+    transition: transform 0.3s ease; /* Плавное увеличение размера при наведении */ /* Добавляем тень для выделения */
+}
+
+.header-logo:hover {
+    cursor: pointer;
+    transform: scale(1.03); /* Небольшое увеличение при наведении */
+}
 .container, .feedback {
     text-align: center;
     padding: 20px;
