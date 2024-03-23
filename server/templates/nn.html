@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealtyOracle</title>
+    <link rel="stylesheet" href="../static/css/cities.css">
+    <script src="../static/js/ymap.js" defer></script>
+    <script src="../static/js/modal.js" defer></script>
+    <script src="../static/js/submit.js" defer></script>
+    <script src="../static/js/read_data_towns.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="description-block">
+            <h1>Нижний Новгород</h1>
+        </div>
+
+        <div class="address-selector">
+            <button id="selectAddress">Выбрать</button>
+            <input type="text" id="addressInput" placeholder="Выберите адрес" readonly>
+        </div>
+        
+        <!-- Модальное окно -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Введите адрес или выберите точку на карте</p>
+                <div id="map" class="yamap"></div>
+                <input type="text" id="selectedLocation" placeholder="Выбранное местоположение будет отображаться здесь" readonly>
+                <select id="districtSelector" style="overflow-y: auto;">
+                    <option value="" disabled selected>Выберите район</option>
+                    <option>Автозаводский</option>
+                    <option>Анкудиновка д</option>
+                    <option>Афонино д</option>
+                    <option>Балахна г</option>
+                    <option>Ближнее Борисово с</option>
+                    <option>Богородск г</option>
+                    <option>Бор г</option>
+                    <option>Буревестник п. (Богородский район)</option>
+                    <option>Вахтан рабочий поселок</option>
+                    <option>Городец г</option>
+                    <option>Дзержинск г</option>
+                    <option>Дружный п</option>
+                    <option>Елизарьево с</option>
+                    <option>Ждановский п</option>
+                    <option>Канавинский</option>
+                    <option>Кстово г</option>
+                    <option>Кстовский</option>
+                    <option>Кузнечиха д</option>
+                    <option>Культура п</option>
+                    <option>Курмыш с</option>
+                    <option>Ленинский</option>
+                    <option>Лысково г</option>
+                    <option>Московский</option>
+                    <option>Неклюдово п</option>
+                    <option>Нижегородский</option>
+                    <option>Новинки п</option>
+                    <option>Новосмолинский п</option>
+                    <option>Приокский</option>
+                    <option>Семёнов</option>
+                    <option>Советский</option>
+                    <option>Сормовский</option>
+                    <option>Старое Кстово</option>
+                    <option>Утечино д</option>
+                    <option>Шахунья г</option>
+                </select>
+                <button id="confirmSelection">Подтвердить</button>
+            </div>
+        </div>
+
+        <script src="https://api-maps.yandex.ru/2.1/?apikey=db164d78-6e0f-4c7f-b20b-d116c15d57f3&lang=ru_RU"></script>
+
+        <div class="input-container">
+            <span class="description-block-params">Площадь</span>
+            <div class="divider"></div>
+            <input type="text" placeholder="м²" id="square" class="input-field"/>
+            <span class="description-block-params">Количество комнат</span>
+            <div class="divider"></div>
+            <input type="text" placeholder="Если студия, введите 0" id="rooms" class="input-field" />
+        </div>
+        <div class="input-container">
+            <span class="description-block-params">Год постройки</span>
+            <div class="divider"></div>
+            <input type="number" placeholder="Год" id="building_year" class="input-field" min="1800" max="2024" />
+            <script src="..\static\try_year.js"></script>
+            <span class="description-block-params">Ремонт</span>
+            <div class="divider"></div>
+            <select id="keep">
+                <option value="good">Хороший</option>
+                <option value="cosmetic">Косметический</option>
+                <option value="design">Дизайнерский</option>
+                <option value="black">Черновой</option>
+                <option value="well_black">Улучшенный черновой</option>
+                <option value="half">Частичный</option>
+                <option value="need">Без ремонта</option>
+            </select>
+        </div>
+        <div class="input-container">
+            <span class="description-block-params">Количество этажей</span>
+            <div class="divider"></div>
+            <input type="text" placeholder="Число: 1, 3, 5, ..." id="floors" class="input-field" />
+            <span class="description-block-params">Тип жилья</span>
+            <div class="divider"></div>
+            <select id="type">
+                <option value="flat">Квартира</option>
+                <option value="room">Комната</option>
+                <option value="apart">Апартаменты</option>
+                <option value="obshaga">Общежитие</option>
+            </select>
+        </div>
+        <div class="input-container">
+            <span class="description-block-params">Этаж</span>
+            <div class="divider"></div>
+            <input type="text" placeholder="Число: 1, 3, 5, ..." id="floor" class="input-field" />
+            <span class="description-block-params">Евроформат</span>
+            <div class="divider"></div>
+            <select id="euro">
+                <option value="True">Да</option>
+                <option value="False">Нет</option>
+            </select>
+        </div>
+        <div class="input-container">
+            <span class="description-block-params">Балкон</span>
+            <div class="divider"></div>
+            <select id="balcon">
+                <option value="no_balcon">Нет балкона</option>
+                <option value="yes_balcon">Балкон</option>
+                <option value="loggia">Лоджия</option>
+                <option value="more_balcon">Большой балкон</option>
+                <option value="more_loggia">Большая лоджия</option>
+                <option value="erker">Эркер</option>
+                <option value="terrace">Терраса</option>
+            </select>
+            <span class="description-block-params">Количество спален</span>
+            <div class="divider"></div>
+            <input type="text" placeholder="Число: 1, 3, 5, ..." id="bedrooms_cnt" class="input-field" />
+        </div>
+
+        <div class="input-container">
+            <span class="description-block-params">Ипотека</span>
+            <div class="divider"></div>
+            <select id="mortgage">
+                <option value="True">Да</option>
+                <option value="False">Нет</option>
+            </select>
+            <span class="description-block-params">Тип стен</span>
+            <div class="divider"></div>
+            <div class="divider"></div>
+            <select id="wall_id">
+                <option value="65.0">Блочные</option>
+                <option value="11.0">Панельные</option>
+                <option value="15.0">Кирпичные</option>
+                <option value="12.0">Монолитные</option>
+                <option value="64.0">Кирпично-монолитные</option>
+            </select>
+        </div>
+
+
+        <button class="start-button" id="sendData">Рассчитать</button>
+        <br>
+        <br>
+        <br>
+
+        </div>
+        <script>
+            document.getElementById('sendData').addEventListener('click', function() {
+                const container = document.querySelector('.container');
+        
+                const oldResults = document.getElementById('results');
+                if (oldResults) {
+                    oldResults.remove();
+                }
+        
+                const resultsDiv = document.createElement('div');
+                resultsDiv.id = 'results';
+                resultsDiv.innerHTML = `
+                    <div class="result-item"><strong>Предсказанная стоимость квартиры:</strong> <span id="predictedPrice">Загрузка...</span></div>
+                    <div class="result-item"><strong>Ближайшее метро:</strong> <span id="nearestMetro">Загрузка...</span></div>
+                    <div class="result-item"><strong>Расстояние до ближайшего метро:</strong> <span id="metroDistance">Загрузка...</span></div>
+                    <div class="result-item"><strong>Расстояние до центра города:</strong> <span id="cityCenterDistance">Загрузка...</span></div>
+                    <div class="result-item"><strong>Изображение:</strong> <div id="imagePlaceholder">Изображение будет здесь</div></div>
+                `;
+                container.appendChild(resultsDiv);
+        
+            });
+        </script>
+        <div class="foot">
+            <footer>
+                <p>&copy; RealtyOracle, 2024</p>
+            </footer>
+        </div>
+    </div>
+    
+</body>
+</html>

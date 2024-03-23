@@ -1,9 +1,8 @@
-from fastapi import APIRouter, Request, UploadFile, File, FastAPI
+from fastapi import APIRouter, Request
 from .models import Town
 from .metro_info import get_metro_info_by_city, get_coordinates_by_city
 from .preprocessing import find_nearest_metro
-from .utils import haversine
-from catboost import CatBoostRegressor, Pool
+from .utils import haversine, generate_shap_waterfall
 import pandas as pd
 import shap
 import io
@@ -11,23 +10,6 @@ import base64
 import matplotlib.pyplot as plt
 
 controller = APIRouter()
-
-
-@controller.post("/receive_data/")
-async def receive_data(town: Town):
-    print(town)
-    return {"message": "Data received successfully"}
-
-
-def generate_shap_waterfall(data, explainer):
-    shap_values = explainer(data)
-    plt.figure()
-    shap.plots.waterfall(shap_values[0], show=False)
-    plt.tight_layout()
-    buffer = io.BytesIO()
-    plt.savefig(buffer, format="png")
-    plt.close()
-    return buffer.getvalue()
 
 
 @controller.post("/nn/")

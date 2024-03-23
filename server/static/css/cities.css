@@ -1,0 +1,489 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="text"] {
+    box-sizing: border-box; /* Включает padding и border в общий размер элемента */
+    padding: 10px; /* Размер внутренних отступов */
+    max-height: 100px;
+    border: none; /* Удалит рамку */
+  }
+
+input[type="number"] {
+  box-sizing: border-box; /* Включает padding и border в общий размер элемента */
+  padding: 10px; /* Размер внутренних отступов */
+  max-height: 100px;
+  border: none; /* Удалит рамку */
+}
+  
+
+.input-field {
+margin-right: 40px; /* Добавляем отступ слева для второго поля ввода */
+}
+
+select {
+    margin-right: 40px;
+    background-color: #ffffff; /* Белый фон */
+    color: #412356; /* Темно-фиолетовый текст */
+    padding: 10px; /* Увеличенный отступ */
+    border-radius: 4px; /* Более закругленные углы */
+    width: 200px; 
+    max-height: 100px;
+    text-align: center; /* Выравнивание текста по центру */
+    display: flex; /* Включаем flexbox */
+    flex-direction: column; /* Элементы располагаются вертикально */
+    align-items: center; /* Выравнивание элементов по центру */
+    gap: 40px; /* Расстояние между элементами внутри блока */
+    text-align: center;
+    box-sizing: border-box; /* Включает padding и border в общий размер элемента */
+    padding: 10px; /* Размер внутренних отступов */
+    max-height: 100px;
+    border: none; /* Удалит рамку */
+    text-align: center;
+  }
+
+.input-container {
+/* Другие стили... */
+display: flex;
+margin-bottom: 20px; /* Отступ снизу 20 пикселей */
+}
+
+/* Опционально: убрать отступ снизу у последнего контейнера */
+.input-container:last-child {
+margin-bottom: 0; /* Убираем отступ снизу у последнего контейнера */
+}
+
+.input-container {
+    display: flex; /* Располагаем элементы горизонтально */
+    align-items: center; /* Центрируем элементы по вертикали */
+    border: none; /* Граница вокруг контейнера */
+    border-radius: 4px; /* Скругление углов контейнера */
+    text-align: center;
+  }
+  
+  .input-field {
+    background-color: #ffffff; /* Белый фон */
+    color: #412356; /* Темно-фиолетовый текст */
+    padding: 10px; /* Увеличенный отступ */
+    border-radius: 4px; /* Более закругленные углы */
+    width: 200px; 
+    max-height: 100px;
+    text-align: center; /* Выравнивание текста по центру */
+    display: flex; /* Включаем flexbox */
+    flex-direction: column; /* Элементы располагаются вертикально */
+    align-items: center; /* Выравнивание элементов по центру */
+    gap: 40px; /* Расстояние между элементами внутри блока */
+    text-align: center;
+
+  }
+
+  .description-block-params {
+    background-color: #ffffff; /* Белый фон */
+    color: #412356; /* Темно-фиолетовый текст */
+    padding: 10px; /* Увеличенный отступ */
+    border-radius: 4px; /* Более закругленные углы */
+    width: 200px; 
+    height: 16.5px;
+    text-align: center; /* Выравнивание текста по центру */
+    display: flex; /* Включаем flexbox */
+    flex-direction: column; /* Элементы располагаются вертикально */
+    align-items: center; /* Выравнивание элементов по центру */
+    gap: 40px; /* Расстояние между элементами внутри блока */
+    text-align: center;
+    font-weight: bold
+  }
+  
+  .divider {
+    height: 20px; /* Высота разделителя */
+    width: 2px; /* Ширина разделителя */
+    background-color: #ffffff; /* Цвет разделителя */
+  }
+  
+  /* Дополнительные стили для улучшения внешнего вида */
+  .input-field:first-child {
+    border-right: 1px solid #ffffff; /* Добавляем разделитель между полями */
+  }
+  
+  .input-field:last-child {
+    border-left: 1px solid #ffffff; /* Добавляем разделитель между полями */
+  }
+
+:root {
+	--index: calc(1vw + 1vh);
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #5e4181, #412356);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    max-width: calc(var(--index) * 15);
+    margin-bottom: 20px;
+}
+
+.description-block {
+    background-color: #ffffff; /* Белый фон */
+    color: #412356; /* Темно-фиолетовый текст */
+    padding: 40px; /* Увеличенный отступ */
+    border-radius: 20px; /* Более закругленные углы */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Более выраженная тень */
+    margin: 40px auto; /* Увеличенный отступ сверху и снизу, автоматическое выравнивание по центру */
+    max-width: 800px; 
+    text-align: center; /* Выравнивание текста по центру */
+    display: flex; /* Включаем flexbox */
+    flex-direction: column; /* Элементы располагаются вертикально */
+    align-items: center; /* Выравнивание элементов по центру */
+    gap: 20px; /* Расстояние между элементами внутри блока */
+}
+
+.description-block h1 {
+    color: #5e4181; /* Чуть более яркий оттенок фиолетового для заголовка */
+    margin-bottom: 20px; /* Увеличенный отступ снизу */
+    font-size: 28px; /* Увеличенный размер шрифта для заголовка */
+    font-weight: bold; /* Жирное начертание */
+}
+
+.description-block p {
+    line-height: 1.8; /* Увеличенный межстрочный интервал */
+    font-size: 18px; /* Увеличенный размер шрифта */
+    max-width: 700px; /* Максимальная ширина абзаца, чтобы текст не растягивался на всю ширину блока */
+    text-align: justify; /* Выравнивание текста по ширине */
+    margin: 0 auto; /* Автоматическое выравнивание абзаца по центру */
+}
+
+
+h1 {
+    font-size: 40px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.start-button {
+    margin: 20px 0;
+    /* Увеличение отступов с учетом --index */
+    padding: calc(1.5 * var(--index)) calc(3 * var(--index));
+    border: none;
+    background-color: #6741a4;
+    color: white;
+    cursor: pointer;
+    /* Увеличение размера шрифта с учетом --index */
+    font-size: calc(1.8 * var(--index));
+    /* Увеличение радиуса скругления с учетом --index */
+    border-radius: calc(2.5 * var(--index));
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.start-button:hover {
+    background-color: #573781;
+    /* Увеличение размера кнопки при наведении */
+    transform: scale(1.05);
+}
+
+.start-button:active {
+  /* Изменяем стили при нажатии */
+  background-color: #331757;
+  transform: scale(0.95); /* Уменьшаем размер кнопки */
+}
+
+.team-info h2, .team-info p {
+    color: #EDE7F6; /* Светло-фиолетовый цвет текста для лучшей читаемости */
+    margin: calc(2 * var(--index)) 0; /* Динамический отступ, использующий переменную --index */
+    /* Динамический размер шрифта, увеличенный в зависимости от --index */
+    font-size: calc(2.2 * var(--index)); 
+    font-weight: bold; /* Жирное начертание текста */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Тень текста для глубины */
+}
+
+.team {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Увеличенный промежуток между членами команды */
+    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
+    margin-top: 20px; /* Дополнительный верхний отступ */
+}
+
+.member img {
+    border-radius: 50%; /* Закругленные углы для фотографий */
+    width: 150px; /* Увеличенный размер изображений */
+    height: 150px; /* Увеличенный размер изображений */
+    object-fit: cover; /* Обеспечивает корректное заполнение контентом */
+    border: 3px solid #B39DDB; /* Светло-фиолетовая рамка вокруг изображений */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень вокруг фотографий для эффекта глубины */
+}
+
+.member p {
+    color: #EDE7F6; /* Светло-фиолетовый цвет текста */
+    margin-top: 10px; /* Отступ сверху */
+    font-size: 18px; /* Увеличенный размер шрифта для имен */
+    font-weight: bold; /* Жирное начертание текста */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Тень для текста, добавляет читаемость на фоне */
+}
+
+
+.foot {
+  width: 100%;
+  bottom: 0; /* Прикрепляем к нижней части экрана */
+  left: 0; /* Выравниваем по левому краю */
+  text-align: center; /* Центрируем текст */
+  background: linear-gradient(135deg, #5e4181, #412356), rgba(0, 0, 0, 0.2); /* Основной фон с небольшой черной прозрачностью */
+  padding: 10px 0; /* Добавляем отступ */
+  color: white; /* Белый цвет текста */
+}
+
+
+
+
+.modal {
+  display: none; /* Скрыто по умолчанию */
+  position: fixed; /* Остаётся на месте при прокрутке */
+  z-index: 1; /* Над другими элементами */
+  left: 0;
+  top: 0;
+  width: 100%; /* Полная ширина */
+  height: 100%; /* Полная высота */
+  overflow: none; /* Включить прокрутку, если необходимо */
+  background-color: rgb(0,0,0); /* Цвет фона */
+  background-color: rgba(0,0,0,0.4); /* Цвет фона с непрозрачностью */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: calc(var(--index) * 1) auto; /* 15% сверху и по центру */
+  padding: 20px;
+  padding-top: 10px;
+  border: 1px solid #888;
+  width: calc(var(--index) * 40); /* Можно регулировать ширину */
+  height: calc(var(--index) * 30);
+}
+
+.modal-content p {
+  color:black;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.yamap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff; /* Цвет фона, можно изменить в соответствии с вашим дизайном */
+  padding: 20px;
+  border-radius: 8px; /* Скругление углов */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень для эффекта всплывания */
+  margin-top: 10px; /* Отступ сверху */
+  width: auto; /* Автоматическая ширина в зависимости от содержимого */ /* Максимальная ширина */
+  height: calc(var(--index) * 19);
+  width: calc(var(--index * 30));
+}
+
+/* Стилизация placeholder для выбранного поля ввода */
+#selectedLocation::placeholder {
+  color: #a0a0a0; /* Цвет текста */
+  font-style: italic; /* Курсивный стиль текста */
+  font-weight: bold; /* Жирный текст */
+}
+
+/* Стилизация самого поля ввода */
+#selectedLocation {
+  border: 2px solid #f0f0f0; /* Цвет границы */
+  border-radius: 5px; /* Скругление углов */
+  padding: 10px; /* Внутренние отступы */
+  color:black;
+  margin-top: 5px; /* Внешний отступ сверху */
+  width: calc(100% - 24px); /* Ширина поля, адаптированная под padding и border */
+  box-sizing: border-box; /* Учитываем padding и border в ширине */
+  font-size: 16px; /* Размер шрифта */
+  margin: 20px;
+}
+
+/* Дополнительные стили для улучшения внешнего вида при фокусе */
+#selectedLocation:focus {
+  border-color: #007bff; /* Цвет границы при фокусе */
+  outline: none; /* Убираем стандартный outline */
+}
+
+#confirmSelection {
+  background-color: #4CAF50; /* Зеленый фон */
+  color: white; /* Белый текст */
+  padding: 10px 20px; /* Внутренние отступы */
+  border: none; /* Убрать границу */
+  margin-top: 10px;
+  border-radius: 5px; /* Скругленные углы */
+  cursor: pointer; /* Курсор в виде указателя */
+  font-size: 16px; /* Размер шрифта */
+  transition: background-color 0.3s, transform 0.2s; /* Анимация для фона и нажатия */
+}
+
+#confirmSelection:hover {
+  background-color: #45a049; /* Темно-зеленый фон при наведении */
+}
+
+#confirmSelection:active {
+  transform: scale(0.98); /* Легкое уменьшение при нажатии */
+}
+
+#addressInput {
+  width: 100%; /* Занимает всю доступную ширину */
+  padding: 10px; /* Поле внутри для текста */
+  margin: 5px 0; /* Отступ сверху и снизу */
+  border: 1px solid #ccc; /* Граница серого цвета */
+  border-radius: 4px; /* Скругление углов */
+  box-sizing: border-box; /* Размеры включают внутренние отступы и границу */
+  background-color: #f8f8f8; /* Светло-серый фон */
+  
+  font-size: 16px; /* Размер шрифта */
+  color: #333; /* Цвет текста */
+  transition: border-color 0.3s, background-color 0.3s; /* Плавное изменение цвета границы и фона */
+}
+
+#addressInput:focus {
+  border-color: #4CAF50; /* Зеленая граница при фокусе */
+  outline: none; /* Убрать стандартный outline */
+  background-color: #e9ffe9; /* Светло-зеленый фон при фокусе */
+}
+
+#addressInput::placeholder {
+  color: #aaa; /* Цвет текста placeholder */
+  font-style: italic; /* Курсивный стиль для placeholder */
+}
+
+#selectAddress {
+  background-color: #008CBA; /* Синий фон */
+  color: white; /* Белый текст */
+  padding: 12px 24px; /* Внутренние отступы */
+  font-size: 16px; /* Размер шрифта */
+  cursor: pointer; /* Курсор в виде указателя */
+  border: none; /* Убрать стандартную рамку */
+  border-radius: 5px; /* Скруглённые углы */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Плавный переход для фона и тени */
+  outline: none; /* Убрать контур при фокусе */
+}
+
+#selectAddress:hover {
+  background-color: #007B9E; /* Темно-синий фон при наведении */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Тень при наведении */
+}
+
+#selectAddress:active {
+  background-color: #006A8E; /* Ещё более темный синий при нажатии */
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2); /* Меньшая тень при нажатии */
+}
+
+#districtSelector {
+  width: 50%;
+  display: block;
+  padding: 10px 20px; /* Увеличенные внутренние отступы */
+  margin: 0 20px;
+  border: 2px solid #e2e2e2; /* Обновлённый цвет границы */
+  border-radius: 8px; /* Более крупное скругление углов */
+  box-sizing: border-box;
+  background-color: #fff; /* Белый фон */
+  font-size: 16px; /* Увеличенный размер шрифта */
+  font-family: 'Arial', sans-serif; /* Современный шрифт */
+  color: #555; /* Обновлённый цвет текста */
+  transition: border-color 0.3s ease-in-out, box-shadow 0.2s ease-in-out; /* Добавлен эффект тени */
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#districtSelector:hover, #districtSelector:focus {
+  border-color: #a2a2a2; /* Изменение цвета границы при наведении/фокусе */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Добавление тени для эффекта "поднятой" кнопки */
+}
+
+/* Кастомная стрелка */
+#districtSelector:after {
+  content: '\25BC';
+  color: #555; /* Цвет стрелки */
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+
+#results {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-size: 16px;
+}
+
+.result-item {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-item strong {
+  color: #333;
+  font-weight: 600;
+}
+
+#imagePlaceholder {
+  width: 100%;
+  height: 200px;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-style: italic;
+  border-radius: 4px;
+}
+
+/* Подправляем последний элемент, чтобы не было нижнего отступа */
+.result-item:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* Стиль для текста загрузки */
+#results span {
+  color: #555;
+}

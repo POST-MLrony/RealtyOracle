@@ -1,6 +1,3 @@
-from ormar import String, Integer, ForeignKey, Boolean, Model, DateTime, ManyToMany, Date
-from db import BaseMeta
-import datetime, bcrypt, os
 from pydantic import BaseModel
 
 class Town(BaseModel):

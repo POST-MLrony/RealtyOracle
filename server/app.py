@@ -1,10 +1,14 @@
 from fastapi import FastAPI
-import db as database
-import sqlalchemy
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from client import client
 from catboost import CatBoostRegressor
+
+# Подключение роутера из модуля client с тегом
+from client import client
+
+# Подключение роутера из модуля api.controller с префиксом и тегом
+from api.controller import controller
+
 
 async def lifespan(app: FastAPI):
     """Подгрузка данных при старте приложения (подгрузка моделей)"""
@@ -21,13 +25,11 @@ async def lifespan(app: FastAPI):
 # Создание экземпляра FastAPI
 app = FastAPI(lifespan=lifespan)
 
-# Подключение роутера из модуля api.controller с префиксом и тегом
-from api.controller import controller
+
 
 app.include_router(controller, prefix='/api/v1', tags=['Сюда лезь!)'])
 
-# Подключение роутера из модуля client с тегом
-from client import client
+
 
 app.include_router(client, tags=['Сюда не лезь!'])
 

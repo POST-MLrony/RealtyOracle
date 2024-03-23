@@ -1,6 +1,10 @@
 import pandas as pd
 from math import sin, cos, sqrt, atan2, radians
 import json
+import shap
+import io
+import base64
+import matplotlib.pyplot as plt
 
 def excel2dict(path: str) -> dict:
     df = pd.read_excel(path)
@@ -78,3 +82,14 @@ def open_json(path: str) -> dict:
         json_data = json.load(f)
     df = pd.json_normalize(json_data)
     return df
+
+
+def generate_shap_waterfall(data, explainer):
+    shap_values = explainer(data)
+    plt.figure()
+    shap.plots.waterfall(shap_values[0], show=False )
+    plt.tight_layout()
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format="png")
+    plt.close()
+    return buffer.getvalue()
