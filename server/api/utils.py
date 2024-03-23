@@ -137,7 +137,7 @@ def generate_shap_waterfall(data, explainer):
     """
     shap_values = explainer(data)
     plt.figure()
-    shap.plots.waterfall(shap_values[0], show=False)
+    shap.plots.waterfall(shap_values[0], show=False, max_display=20)
     plt.tight_layout()
     buffer = io.BytesIO()
     plt.savefig(buffer, format="png")
