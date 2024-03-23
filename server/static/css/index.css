@@ -1,11 +1,71 @@
+
+
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 :root {
 	--index: calc(1vw + 1vh);
+}
+.header {
+    background: linear-gradient(135deg, #5e4181, #412356);
+    display: flex;
+    border-bottom: 3px solid #674d88; /* Сделана более тонкой и цветово сочетающейся */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0; /* Добавлен отступ для внутреннего содержимого от краев шапки */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%; /* Уменьшено для добавления внутренних отступов */
+    max-width: 1200px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 20px;
+}
+
+.nav-link {
+    background-color: #674d88;
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px; /* Увеличено расстояние для большего пространства */
+    padding: 10px 15px; /* Добавлен внутренний отступ для увеличения области клика */
+    border-radius: 8px; /* Увеличен радиус скругления */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Добавлен переход цвета текста */
+}
+
+.nav-link:hover {
+    background-color: #7a66a9;
+    color: #e1e1e1; /* Светлее цвет при наведении */
+}
+
+.header-logo {
+    height: 100px; /* Уменьшено для лучшего вписывания */
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.header-logo:hover {
+    cursor: pointer;
+    transform: scale(1.05); /* Увеличено масштабирование для большего эффекта */
 }
 
 .container {
@@ -19,10 +79,6 @@ body, html {
     align-items: center;
 }
 
-.logo {
-    max-width: calc(var(--index) * 15);
-    margin-bottom: 20px;
-}
 
 .description-block {
     background-color: #ffffff; /* Белый фон */
@@ -66,7 +122,7 @@ p {
     margin: 10px 0;
 }
 
-.start-button {
+.to-second {
     margin: 20px 0;
     /* Увеличение отступов с учетом --index */
     padding: calc(1.5 * var(--index)) calc(3 * var(--index));
@@ -81,7 +137,7 @@ p {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.start-button:hover {
+.to-second:hover {
     background-color: #573781;
     /* Увеличение размера кнопки при наведении */
     transform: scale(1.05);

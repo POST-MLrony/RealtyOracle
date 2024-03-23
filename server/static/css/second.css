@@ -8,7 +8,63 @@ body, html {
 :root {
     --index: calc(1vw + 1vh);
 }
+.header {
+    background: linear-gradient(135deg, #5e4181, #412356);
+    display: flex;
+    border-bottom: 3px solid #674d88; /* Сделана более тонкой и цветово сочетающейся */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0; /* Добавлен отступ для внутреннего содержимого от краев шапки */
+}
 
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%; /* Уменьшено для добавления внутренних отступов */
+    max-width: 1200px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 20px;
+}
+
+.nav-link {
+    background-color: #674d88;
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px; /* Увеличено расстояние для большего пространства */
+    padding: 10px 15px; /* Добавлен внутренний отступ для увеличения области клика */
+    border-radius: 8px; /* Увеличен радиус скругления */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Добавлен переход цвета текста */
+}
+
+.nav-link:hover {
+    background-color: #7a66a9;
+    color: #e1e1e1; /* Светлее цвет при наведении */
+}
+
+.header-logo {
+    height: 100px; /* Уменьшено для лучшего вписывания */
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.header-logo:hover {
+    cursor: pointer;
+    transform: scale(1.05); /* Увеличено масштабирование для большего эффекта */
+}
 .container, .feedback {
     text-align: center;
     padding: 20px;
@@ -34,7 +90,7 @@ body, html {
     background-color: #6741a4;
     color: white;
     cursor: pointer;
-    font-size: calc(1.8 * var(--index));
+    font-size: calc(1.6 * var(--index));
     border-radius: calc(2.5 * var(--index));
     transition: background-color 0.3s ease, transform 0.3s ease;
     width: calc(var(--index) * 20);
