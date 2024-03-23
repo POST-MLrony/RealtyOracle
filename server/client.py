@@ -43,4 +43,4 @@ async def predict(request: Request):
 
 @client.get("/novosibirsk")
 async def predict(request: Request):
-    return HTMLResponse(open("templates/kazan.html").read())
+    return HTMLResponse(open("templates/novosibirsk.html").read())
