@@ -27,10 +27,10 @@ document.getElementById('sendData').addEventListener('click', function() {
         floors: Number(floors),
         type: String(type),
         floor: Number(floor),
+        building_class: String(class_),
         lo: Number(window.GlobCoords[1]),
         la: Number(window.GlobCoords[0]),
         wall_id: Number(wall_id),
-        class_: String(class_),
         district: String(selectedText)
     };
 
