@@ -10,7 +10,7 @@ document.getElementById('sendData').addEventListener('click', function() {
     var selectedText = meta_district.options[meta_district.selectedIndex].text;
 
     // Здесь URL, на который вы отправляете запрос. Замените его на актуальный URL вашего API
-    const url = "https://151b-77-238-135-243.ngrok-free.app/api/v1/nn/";
+    const url = "https://151b-77-238-135-243.ngrok-free.app/api/v1/msk/";
 
     // Подготавливаем данные для отправки
     let studio = false; // Исходно предполагаем, что это не студия
@@ -18,8 +18,6 @@ document.getElementById('sendData').addEventListener('click', function() {
         studio = true;
         rooms = "1"; // Изменяем на строку, чтобы сохранить консистентность типов данных
     }
-
-  
 
     const data = {
         square: Number(square),
@@ -30,7 +28,7 @@ document.getElementById('sendData').addEventListener('click', function() {
         building_class: String(class_),
         lo: Number(window.GlobCoords[1]),
         la: Number(window.GlobCoords[0]),
-        wall_id: Number(wall_id),
+        wall_id: String(wall_id),
         district: String(selectedText)
     };
 
