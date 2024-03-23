@@ -4,30 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/second.css">
-    <title>Second</title>
+    <link rel="icon" href="../static/src/logo.png" type="image/x-icon">
+    <script src="../static/js/transition.js" defer></script>
+    <title>Выбор города</title>
 </head>
 <body>
     <div class="container">
         <h1>Выберите город, в котором хотите сделать предсказание цены.</h1>
-        <button class="button">Москва</button>
-        <button class="button">Санкт-Петербург</button>
-        <button class="button">Нижний Новгород</button>
-        <button class="button">Казань</button>
-        <button class="button">Новосибирск</button>
-        <button class="button">Екатеринбург</button>
+        <button class="button" data-href="msk.html">Москва</button>
+        <button class="button" data-href="spb.html">Санкт-Петербург</button>
+        <button class="button" data-href="nn.html">Нижний Новгород</button>
+        <button class="button" data-href="kazan.html">Казань</button>
+        <button class="button" data-href="novosibirsk.html">Новосибирск</button>
+        <button class="button" data-href="ekb.html">Екатеринбург</button>
     </div>
     <div class="feedback">
         <h2>Отправьте нам сообщение!</h2>
         <p>Если у Вас есть вопросы или предложения по сотрудничеству, заполните форму ниже.</p>
         <form>
-            <input type="text" placeholder="Ваше имя" name="name" required>
-            <input type="email" placeholder="Ваш email" name="email" required>
+            <input type="text" placeholder="Ваше имя" name="name" required style="width: 200px; height: 20px;">
+            <input type="email" placeholder="Ваш email" name="email" required style="width: 200px; height: 20px;">
             <textarea placeholder="Ваше сообщение" name="message" required></textarea>
             <button type="submit" class="button submit-button">Отправить</button>
         </form>
-    <br>
-    <br>
-    <br>
     </div>
     
     <div class="foot">
