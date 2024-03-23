@@ -14,9 +14,13 @@ document.getElementById('sendData').addEventListener('click', function() {
     var meta_district = document.getElementById('districtSelector');
     var selectedText = meta_district.options[meta_district.selectedIndex].text;
 
-    // Здесь URL, на который вы отправляете запрос. Замените его на актуальный URL вашего API
-    const url = "https://151b-77-238-135-243.ngrok-free.app/api/v1/nn/";
 
+    const path = window.location.pathname;
+    // Извлекаем имя файла (страницы) из пути
+    const pageName = path.split('/').pop().replace('.html', '');
+
+    // Используем полученное имя страницы в URL
+    const url = `https://151b-77-238-135-243.ngrok-free.app/api/v1/${pageName}/`;
     // Подготавливаем данные для отправки
     let studio = false; // Исходно предполагаем, что это не студия
     if (rooms == "0") { // Проверяем строковое значение, так как .value возвращает строку
