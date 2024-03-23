@@ -1,30 +1,27 @@
-import ymaps from 'ymaps';
 function init() {
     var path = window.location.pathname;
     var page = path.split("/").pop(); // Получаем название файла
     var center;
     // Установка центра карты в зависимости от названия файла
     switch (page) {
-        case '/nn':
+        case 'nn':
             center = [56.3287, 44.002]; // Координаты для страницы page1/
             break;
-        case '/novosibirsk':
+        case 'novosibirsk':
             center = [55.0415, 82.9346]; // Координаты для страницы page2/
             break;
-        case '/kazan':
+        case 'kazan':
             center = [55.7887, 49.1221];
             break;
-        case '/spb':
+        case 'spb':
             center = [59.9386, 30.3141];
             break;  
-        case '/ekb':
+        case 'ekb':
             center = [56.8519, 60.6122];
             break; 
-        case '/msk':
+        case 'msk':
             center = [55.7522, 37.6156];
             break; 
-        default:
-            center = [55.7522, 37.6156];
     }
     var myMap = new ymaps.Map('map', {
         center,
