@@ -205,7 +205,7 @@
         </div>
 
         <script src="https://api-maps.yandex.ru/2.1/?apikey=db164d78-6e0f-4c7f-b20b-d116c15d57f3&lang=ru_RU"></script>
-
+        <br>
         <div class="input-container">
             <span class="description-block-params">Площадь</span>
             <div class="divider"></div>
@@ -254,33 +254,8 @@
 
 
         <button class="start-button" id="sendData">Рассчитать</button>
-        <br>
-        <br>
-        <br>
 
         </div>
-        <script>
-            document.getElementById('sendData').addEventListener('click', function() {
-                const container = document.querySelector('.container');
-        
-                const oldResults = document.getElementById('results');
-                if (oldResults) {
-                    oldResults.remove();
-                }
-        
-                const resultsDiv = document.createElement('div');
-                resultsDiv.id = 'results';
-                resultsDiv.innerHTML = `
-                    <div class="result-item"><strong>Предсказанная стоимость квартиры:</strong> <span id="predictedPrice">Загрузка...</span></div>
-                    <div class="result-item"><strong>Ближайшее метро:</strong> <span id="nearestMetro">Загрузка...</span></div>
-                    <div class="result-item"><strong>Расстояние до ближайшего метро:</strong> <span id="metroDistance">Загрузка...</span></div>
-                    <div class="result-item"><strong>Расстояние до центра города:</strong> <span id="cityCenterDistance">Загрузка...</span></div>
-                    <div class="result-item"><strong>Изображение:</strong> <div id="imagePlaceholder">Изображение будет здесь</div></div>
-                `;
-                container.appendChild(resultsDiv);
-        
-            });
-        </script>
         <div class="foot">
             <footer>
                 <p>&copy; RealtyOracle, 2024</p>
