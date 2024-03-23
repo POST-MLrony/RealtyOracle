@@ -785,6 +785,26 @@ centres = [
 ]
 
 
+feature_names = [
+    "Площадь",
+    "Количество этажей",
+    "Количество спален",
+    "Евро ремонт",
+    "Тип стен",
+    "Количество Комнат",
+    "Тип объекта",
+    "Этаж",
+    "Тип балкона",
+    "Студия",
+    "Площадь",
+    "Возраст здания",
+    "Вид ремонта",
+    "Ближайшее метро",
+    "Расстояние до метро",
+    "Расстояние до центра",
+]
+
+
 def get_metro_info_by_city(city: str) -> List[Dict[str, Any]]:
     if city == "Санкт-Петербург":
         return spb_metro
@@ -812,6 +832,6 @@ def get_coordinates_by_city(city_name):
     tuple or None: Кортеж с координатами (geo_lat, geo_lon) или None, если город не найден.
     """
     for centre in centres:
-        if centre.get('city') == city_name:
-            return centre.get('geo_lat'), centre.get('geo_lon')
+        if centre.get("city") == city_name:
+            return centre.get("geo_lat"), centre.get("geo_lon")
     return None

@@ -13,8 +13,23 @@ from api.controller import controller
 async def lifespan(app: FastAPI):
     """Подгрузка данных при старте приложения (подгрузка моделей)"""
     model_nn = CatBoostRegressor()
-    model_nn.load_model("static/models/model_nn.cbm")
+    model_nn.load_model("static/models/nn.cbm")
     app.state.model_nn = model_nn
+    model_ekb = CatBoostRegressor()
+    model_ekb.load_model("static/models/ekb.cbm")
+    app.state.model_ekb = model_ekb
+    model_novosibirsk = CatBoostRegressor()
+    model_novosibirsk.load_model("static/models/novosibirsk.cbm")
+    app.state.model_novosibirsk = model_novosibirsk
+    model_spb = CatBoostRegressor()
+    model_spb.load_model("static/models/spb.cbm")
+    app.state.model_spb = model_spb
+    model_kazan = CatBoostRegressor()
+    model_kazan.load_model("static/models/kazan.cbm")
+    app.state.model_kazan = model_kazan
+    model_msk = CatBoostRegressor()
+    model_msk.load_model("static/models/msk.cbm")
+    app.state.model_msk = model_msk
     print("ML model loaded")
     yield
     # При завершении работы приложения

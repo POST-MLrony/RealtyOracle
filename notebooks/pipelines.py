@@ -13,7 +13,7 @@ from .preprocessing import (
 )
 import datetime
 from server.api.metro_info import get_metro_info_by_city, get_coordinates_by_city
-from typing import List
+from typing import List, Any
 import datetime
 from sklearn.model_selection import train_test_split
 
@@ -22,10 +22,32 @@ def preprocess_pipeline(
     df: pd.DataFrame,
     city: str,
     categories: List[str],
-    replace_value=0,
+    replace_value: Any = 0,
     need_quantiles_trim: bool = True,
     need_isolation_trim: bool = True,
 ) -> pd.DataFrame:
+    """Пайплайн для предобработки данных.
+
+    Args:
+        df (pd.DataFrame): DataFrame с данными.
+        city (str): Название города.
+        categories (List[str]): Список названий категориальных столбцов.
+        replace_value (Any, optional): Значение для замены редких категорий.
+            По умолчанию установлено значение 0.
+        need_quantiles_trim (bool, optional): Флаг для обрезки данных по квантилям.
+            По умолчанию установлено значение True.
+        need_isolation_trim (bool, optional): Флаг для обрезки данных с помощью изоляционного леса.
+            По умолчанию установлено значение True.
+
+    Returns:
+        pd.DataFrame: DataFrame с предобработанными данными.
+
+    Description:
+        Этот пайплайн выполняет предобработку данных, включая замену редких категорий,
+        заполнение пропущенных координат, поиск ближайших соседей, вычисление расстояний
+        до метро и центра города, а также обрезку данных по квантилям и с использованием изоляционного леса.
+
+    """
     df["lo"] = df["lo"].astype(float)
     df["la"] = df["la"].astype(float)
     df["price"] = df["price"].astype(float)
@@ -78,20 +100,67 @@ def preprocess_pipeline(
 
 
 def train_pipeline(
-    x_train, y_train, x_val, y_val, categories, model_type: str = "catboost", loss: str = "RMSE"
-):
+    x_train: pd.DataFrame,
+    y_train: pd.Series,
+    x_val: pd.DataFrame,
+    y_val: pd.Series,
+    categories: List[str],
+    model_type: str = "catboost",
+    loss: str = "RMSE",
+) -> Any:
+    """Обучает модель машинного обучения.
+
+    Args:
+        x_train (pd.DataFrame): DataFrame с признаками обучающей выборки.
+        y_train (pd.Series): Столбец с целевой переменной обучающей выборки.
+        x_val (pd.DataFrame): DataFrame с признаками валидационной выборки.
+        y_val (pd.Series): Столбец с целевой переменной валидационной выборки.
+        categories (List[str]): Список названий категориальных признаков.
+        model_type (str, optional): Тип модели. По умолчанию "catboost".
+        loss (str, optional): Функция потерь для модели. По умолчанию "RMSE".
+
+    Returns:
+        CatBoostRegressor: Обученная модель машинного обучения.
+
+    Description:
+        Эта функция обучает модель машинного обучения с использованием
+        выбранных признаков и целевой переменной.
+
+    """
     if model_type == "catboost":
         from catboost import CatBoostRegressor
 
         model = CatBoostRegressor(
-            cat_features=categories, verbose=100, iterations=10000, loss_function= loss
+            cat_features=categories, verbose=100, iterations=10000, loss_function=loss
         )
     model.fit(x_train, y_train, eval_set=(x_val, y_val), use_best_model=True)
     return model
 
 
+def split_pipeline(
+    df: pd.DataFrame,
+    train_size: float,
+    test_size: float,
+    y_column: str,
+    random_state: int = 0,
+) -> tuple:
+    """Разбивает данные на обучающую и тестовую выборки.
 
-def split_pipeline(df, train_size, test_size, y_column: str, random_state: int = 0):
+    Args:
+        df (pd.DataFrame): DataFrame с данными.
+        train_size (float): Размер обучающей выборки.
+        test_size (float): Размер тестовой выборки.
+        y_column (str): Название столбца с целевой переменной.
+        random_state (int, optional): Зерно для случайной генерации. По умолчанию 0.
+
+    Returns:
+        tuple: Кортеж, содержащий x_train, x_test, y_train, y_test.
+
+    Description:
+        Эта функция разбивает данные на обучающую и тестовую выборки
+        с заданными размерами и целевой переменной.
+
+    """
     x_train, x_test, y_train, y_test = train_test_split(
         df.drop(y_column, axis=1),
         df[y_column],

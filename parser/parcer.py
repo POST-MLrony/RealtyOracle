@@ -7,6 +7,21 @@ import json
 from typing import List
 import time
 def parse_flats(city:str, flat_types:List[str]) -> None:
+    """Парсит данные о квартирах с веб-страницы и сохраняет их в формате JSON.
+
+    Args:
+        city (str): Название города, данные о квартирах которого необходимо парсить.
+        flat_types (List[str]): Список типов квартир для парсинга.
+
+    Returns:
+        None
+
+    Description:
+        Эта функция открывает веб-страницу для указанного города и типов квартир,
+        последовательно переходит по страницам с помощью кнопок "Следующая",
+        извлекает данные о квартирах из сетевых запросов и сохраняет их в формате JSON.
+
+    """
     driver = webdriver.Firefox()
     for flat_type in flat_types:
         driver.get(f'https://{city}.etagi.com/{flat_type}/')
