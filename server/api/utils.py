@@ -139,6 +139,7 @@ def generate_shap_waterfall(data, explainer):
     plt.figure()
     shap.plots.waterfall(shap_values[0], show=False, max_display=20)
     plt.tight_layout()
+    plt.gcf().set_size_inches(13,7)
     buffer = io.BytesIO()
     plt.savefig(buffer, format="png")
     plt.close()
