@@ -6,12 +6,26 @@
     <title>RealtyOracle</title>
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="icon" href="../static/src/logo.png" type="image/x-icon">
-    <script src="../static/js/transition.js" defer></script>
+    <script src="../static/js/to_next.js" defer></script>
+    <script src="../static/js/to_second.js" defer></script>
 </head>
 <body>
     <div class="header">
         <div class="header-content">
-            <img src="../static/src/logo.png" alt="Логотип RealtyOracle" class="header-logo" id="logo">
+            <!-- Объединяем левые ссылки и правые ссылки для гибкости расположения -->
+            <div class="nav-container">
+                <ul class="nav-links nav-links-left">
+                    <li><a href="msk.html" class="nav-link">Москва</a></li>
+                    <li><a href="spb.html" class="nav-link">Санкт-Петербург</a></li>
+                    <li><a href="nn.html" class="nav-link">Нижний Новгород</a></li>
+                </ul>
+                <img src="../static/src/logo.png" alt="Логотип RealtyOracle" class="header-logo" id="logo">
+                <ul class="nav-links nav-links-right">
+                    <li><a href="kazan.html" class="nav-link">Казань</a></li>
+                    <li><a href="novosibirsk.html" class="nav-link">Новосибирск</a></li>
+                    <li><a href="ekb.html" class="nav-link">Екатеринбург</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -23,7 +37,7 @@
                 Благодаря глубокому анализу больших данных, включая районные характеристики, экономические индикаторы и множество других факторов, наш сервис выделяется на фоне других инструментов анализа рынка. Мы предоставляем пользователям интуитивно понятный интерфейс, который позволяет легко получить доступ к сложному аналитическому инструментарию, делая процесс принятия решений о покупке, продаже или инвестировании в недвижимость более обоснованным и эффективным.
             </p>
         </div>
-        <button class="to-second">Приступить</button>
+        <button class="to-second" id="toSecond">Приступить</button>
         <div class="team-info">
             <h2>Команда разработки</h2>
             <p>POST MLrony</p>

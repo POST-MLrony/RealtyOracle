@@ -13,6 +13,3 @@ document.getElementById('logo').addEventListener('click', function() {
     window.location.href = 'index.html';
 });
 
-document.querySelector('.to-second').addEventListener('click', function() {
-    window.location.href = 'second.html';
-});
