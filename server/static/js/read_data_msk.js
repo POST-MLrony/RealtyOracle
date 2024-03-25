@@ -8,7 +8,9 @@ document.getElementById('sendData').addEventListener('click', function() {
     const class_ = document.getElementById('class').value;
     var meta_district = document.getElementById('districtSelector');
     var selectedText = meta_district.options[meta_district.selectedIndex].text;
-
+    if (selectedText == "Выберите район") {
+        selectedText = "Другой (не выбран)";
+    }
     // Здесь URL, на который вы отправляете запрос. Замените его на актуальный URL вашего API
     const url = "https://151b-77-238-135-243.ngrok-free.app/api/v1/msk/";
 

@@ -81,6 +81,7 @@ body, html {
     padding-top: 40px;
     padding-bottom: 40px;
     box-shadow: 0 -5px 10px rgba(0,0,0,0.3); /* Добавим тень для визуального разделения */
+    min-height: 50vh;
 }
 
 .button, .submit-button {

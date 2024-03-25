@@ -13,6 +13,9 @@ document.getElementById('sendData').addEventListener('click', function() {
     const euro = document.getElementById('euro').value;
     var meta_district = document.getElementById('districtSelector');
     var selectedText = meta_district.options[meta_district.selectedIndex].text;
+    if (selectedText == "Выберите район") {
+        selectedText = "Другой (не выбран)";
+    }
 
 
     const path = window.location.pathname;
