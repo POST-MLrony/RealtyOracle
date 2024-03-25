@@ -23,7 +23,7 @@ document.getElementById('sendData').addEventListener('click', function() {
     const pageName = path.split('/').pop().replace('.html', '');
 
     // Используем полученное имя страницы в URL
-    const url = `https://151b-77-238-135-243.ngrok-free.app/api/v1/${pageName}/`;
+    const url = `https://dd83-77-238-135-243.ngrok-free.app/api/v1/${pageName}/`;
     // Подготавливаем данные для отправки
     let studio = false; // Исходно предполагаем, что это не студия
     if (rooms == "0") { // Проверяем строковое значение, так как .value возвращает строку
